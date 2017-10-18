@@ -1,8 +1,5 @@
 // Print Instructions:
 function help() {
-    // if(process.argv[2] === 'help') {
-        
-    // }
     console.log('');
     console.log('\x1b[32m');
     console.log('   ADD     :   returns the sum of all arguments after            |  example: "add 5 2" returns 7');
