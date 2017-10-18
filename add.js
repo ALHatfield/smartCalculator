@@ -6,17 +6,11 @@ function add() {
         // Initiate sum
         var sum = 0;
         // A loop that adds up the numbers and skips over not-numbers
-        arg.forEach(function(e) {
-            var num = parseInt(e)
-            if(isNaN(num) === true) {
-                // Remove non-number from array
-                arg.splice(arg.indexOf(e), 2);
-                return arg;
-            } else {
-                sum += parseInt(e);
-            }
-        });
-        console.log(arg);
+        for(var i = arg.length - 1; i >= 0; i--) {
+            var num = parseInt(arg[i])
+            isNaN(num) ? arg.splice(i, 1) : sum += parseInt(num);
+        }
+        
         console.log('\x1b[34m','==========================================================', '\x1b[0m');
         console.log('');
         console.log('\x1b[1m','\x1b[30m',`${arg.join(' + ')}`,'\x1b[0m');
