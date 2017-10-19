@@ -1,10 +1,10 @@
 function mult() {
     // Grab the numeral input arguments
     var arg = process.argv.splice(3);
-    // Initiate product to first argument
-    var product = arg[0];
+    // Initiate product to 1. Anything times 1 is itself.
+    var product = 1;
     // Loop that subtracts each number and skips over non-numbers
-    for(var i = arg.length - 2; i >= 0; i--) {
+    for(var i = arg.length - 1; i >= 0; i--) {
         var num = parseInt(arg[i]);
         isNaN(num) ? arg.splice(i, 1) : product *= num;
     }
