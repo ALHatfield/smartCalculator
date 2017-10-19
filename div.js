@@ -4,14 +4,14 @@ function div() {
     arg = arg.reverse();                // Reverse the array for the loop
 
     // Find starting number to subtract from
-    for(let i = arg.length - 1; (i >= 0) && (diff === undefined); i--) {
-        isNaN(arg[i]) ? arg.splice(i, 1) : diff = arg[i];
+    for(let i = arg.length - 1; (i >= 0) && (dividend === undefined); i--) {
+        isNaN(arg[i]) ? arg.splice(i, 1) : dividend = arg[i];
     }
 
     // Subtract remaining arguments from starting number
-    if(typeof diff !== undefined) {
+    if(typeof dividend !== undefined) {
         for(let i = arg.length - 2; i >= 0; i--) {
-            isNaN(arg[i]) ? arg.splice(i, 1) : diff -= arg[i];
+            isNaN(arg[i]) ? arg.splice(i, 1) : dividend -= arg[i];
         }
     }
 
