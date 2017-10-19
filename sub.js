@@ -1,18 +1,22 @@
 function sub() {
-    // Grab numeral input arguments
-    var arg = process.argv.splice(3);
-    // Initiate diff to first argument
-    var diff = arg[0];
-    // reverse the array for the loop
-    arg = arg.reverse();
-    // Loop that subtracts each number and skips over non-numbers 
-    // Need to start loop at 'arg.length - 2' otherwise starting value will subtract itself
-    for(var i = arg.length - 2; i >= 0; i--) {
-        var num = parseInt(arg[i]);
-        isNaN(num) ? arg.splice(i, 1) : diff -= num;
+    var arg = process.argv.splice(3);   // Grab numeral input arguments
+    var diff;                           // initiate our starting point as a variable
+    arg = arg.reverse();                // Reverse the array for the loop
+
+    // Find starting number to subtract from
+    for(let i = arg.length - 1; (i >= 0) && (diff === undefined); i--) {
+        isNaN(arg[i]) ? arg.splice(i, 1) : diff = arg[i];
     }
-    // Reorder the list to print
-    arg = arg.reverse();
+
+    // Subtract remaining arguments from starting number
+    if(typeof diff !== undefined) {
+        for(let i = arg.length - 2; i >= 0; i--) {
+            isNaN(arg[i]) ? arg.splice(i, 1) : diff -= arg[i];
+        }
+    }
+
+    arg = arg.reverse();                // Reorder the list to print
+
     // Print
     console.log('\x1b[34m','==========================================================', '\x1b[0m');
     console.log('');

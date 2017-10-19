@@ -1,13 +1,22 @@
 function div() {
-    // Grab the numeral input arguments except the first number
-    var arg = process.argv.splice(4);
-    // Initate dividend to first numeral argument
-    var dividend = process.argv[3];
-    // Loop that subtracts each number and skips over non-numbers
-    for(var i = arg.length - 1; i >= 0; i--) {
-        var num = parseInt(arg[i]);
-        isNaN(num) ? arg.splice(i, 1) : dividend /= num;
+    var arg = process.argv.splice(3);   // Grab numeral input arguments
+    var dividend;                       // initiate our starting point as a variable
+    arg = arg.reverse();                // Reverse the array for the loop
+
+    // Find starting number to subtract from
+    for(let i = arg.length - 1; (i >= 0) && (diff === undefined); i--) {
+        isNaN(arg[i]) ? arg.splice(i, 1) : diff = arg[i];
     }
+
+    // Subtract remaining arguments from starting number
+    if(typeof diff !== undefined) {
+        for(let i = arg.length - 2; i >= 0; i--) {
+            isNaN(arg[i]) ? arg.splice(i, 1) : diff -= arg[i];
+        }
+    }
+
+    arg = arg.reverse();                // Reorder the list to print
+    
     // Print
     console.log('\x1b[34m','==========================================================', '\x1b[0m');
     console.log('');
